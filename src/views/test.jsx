@@ -6,7 +6,12 @@ export const Basic = () => {
     console.log("captcha:", captcha);
   }, []);
 
-  return <Captcha charNum={4} onChange={handleClick} />;
+  return (
+    <div>
+      <Captcha charNum={4} onChange={handleClick} />
+      <h1>测试git</h1>
+    </div>
+  );
 };
 
 export default Basic;
