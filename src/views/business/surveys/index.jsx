@@ -9,7 +9,9 @@ import {
 } from "antd";
 import {
   EditTwoTone,
-  // PlusOutlined,
+  PlusOutlined,
+  EyeOutlined,
+  EditOutlined,
   DeleteOutlined,
   SearchOutlined,
   SyncOutlined,
@@ -73,7 +75,7 @@ const Surveys = () => {
         title: arr[i].title,
         status:
           arr[i].status === 0 ? (
-            <Tag color="cyan">正常</Tag>
+            <Tag color="green">正常</Tag>
           ) : (
             <Tag color="red">停用</Tag>
           ),
@@ -82,6 +84,14 @@ const Surveys = () => {
         creattime: arr[i].create_time,
         operate: (
           <div className="flex justify-around cursor-pointer text-[#1677ff]">
+            <span>
+              <EditTwoTone />
+              编辑问题
+            </span>
+            <span>
+              <EyeOutlined />
+              数据
+            </span>
             <span>
               <EditTwoTone />
               编辑
@@ -116,7 +126,7 @@ const Surveys = () => {
     <>
       <div className="h-[80px] w-[100%]  flex items-center">
         <div className="w-[240px] flex justify-between items-center">
-          <div>问题</div>
+          <div>问卷调查标题</div>
           <Input className="ml-[5px] w-[170px]" />
         </div>
         <Button type="primary" className="ml-[10px]" icon={<SearchOutlined />}>
@@ -132,11 +142,19 @@ const Surveys = () => {
       </div>
       <div className="h-[60px] w-[100%]  flex items-center">
         <Tag
-          color="red"
+          color="blue"
           className="w-[60px] h-[30px] cursor-pointer flex items-center justify-center"
-          icon={<DeleteOutlined />}
+          icon={<PlusOutlined />}
+          // onClick={showModal}
         >
-          删除
+          新增
+        </Tag>
+        <Tag
+          color="green"
+          className="w-[60px] h-[30px] cursor-pointer flex items-center justify-center"
+          icon={<EditOutlined />}
+        >
+          修改
         </Tag>
       </div>
       <Spin spinning={spinning}>

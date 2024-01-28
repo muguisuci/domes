@@ -8,11 +8,12 @@ import {
   Spin,
 } from "antd";
 import {
-  EditTwoTone,
+  // EditTwoTone,
   // PlusOutlined,
   DeleteOutlined,
   SearchOutlined,
   SyncOutlined,
+  EyeOutlined,
 } from "@ant-design/icons";
 import { businessFeedbackList } from "@/service";
 import { useState, useEffect } from "react";
@@ -68,8 +69,8 @@ const Feedback = () => {
         operate: (
           <div className="flex justify-around cursor-pointer text-[#1677ff]">
             <span>
-              <EditTwoTone />
-              编辑
+              <EyeOutlined />
+              详情
             </span>
             <span
               onClick={() => {
@@ -88,7 +89,7 @@ const Feedback = () => {
   const getFund = () => {
     businessFeedbackList()
       .then((res) => {
-        console.log(res);
+        console.log(res.data.data.result);
         changes(treeData(res.data.data.result));
       })
       .catch((err) => console.log(err));

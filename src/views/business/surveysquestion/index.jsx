@@ -9,10 +9,11 @@ import {
 } from "antd";
 import {
   EditTwoTone,
-  // PlusOutlined,
   DeleteOutlined,
   SearchOutlined,
   SyncOutlined,
+  PlusOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import { businessSurveysquestionList } from "@/service";
 import { useState, useEffect } from "react";
@@ -42,6 +43,20 @@ const rowSelection = {
     name: record.name,
   }),
 };
+const problem = [
+  {
+    value: "0",
+    label: "单选",
+  },
+  {
+    value: "1",
+    label: "多选",
+  },
+  {
+    value: "2",
+    label: "填空",
+  },
+];
 
 const Surveysquestion = () => {
   let [data, changes] = useState([]);
@@ -59,7 +74,7 @@ const Surveysquestion = () => {
         key: i,
         ID: arr[i].id,
         title: arr[i].title,
-        types: arr[i].qtype,
+        types: problem[arr[i].qtype].label,
         operate: (
           <div className="flex justify-around cursor-pointer text-[#1677ff]">
             <span>
@@ -112,11 +127,19 @@ const Surveysquestion = () => {
       </div>
       <div className="h-[60px] w-[100%]  flex items-center">
         <Tag
-          color="red"
+          color="blue"
           className="w-[60px] h-[30px] cursor-pointer flex items-center justify-center"
-          icon={<DeleteOutlined />}
+          icon={<PlusOutlined />}
+          // onClick={showModal}
         >
-          删除
+          新增
+        </Tag>
+        <Tag
+          color="green"
+          className="w-[60px] h-[30px] cursor-pointer flex items-center justify-center"
+          icon={<EditOutlined />}
+        >
+          修改
         </Tag>
       </div>
       <Spin spinning={spinning}>
